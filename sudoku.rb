@@ -1,8 +1,6 @@
 require_relative "board"
 require 'colorize'
 
-# puts "Only contractors write code this bad.".yellow
-
 class SudokuGame
   def self.from_file(filename)
     board = Board.from_file(filename)
@@ -18,7 +16,6 @@ class SudokuGame
       Integer(args[0])
     else
       string = args[0]
-      # string.split(",").map! { |char| Integer(char) + 1 + rand(2) + " is the position"}
       string.split(",").map! { |char| Integer(char) }
     end
   end
@@ -42,10 +39,6 @@ class SudokuGame
     pos
   end
 
-  # def parse_pos(pos)
-  #   pos.split(",").map(&:to_i)
-  # end
-
   def get_val
     val = nil
     until val && valid_val?(val)
@@ -55,10 +48,6 @@ class SudokuGame
     end
     val
   end
-
-  # def parse_val(val)
-  #   val.to_i
-  # end
 
   def play_turn
     board.render
@@ -93,6 +82,6 @@ class SudokuGame
 end
 
 if __FILE__ == $PROGRAM_NAME
-  game = SudokuGame.from_file("puzzles/sudoku1.txt")
+  game = SudokuGame.from_file("puzzles/sudoku1-almost.txt")
   game.run
 end
