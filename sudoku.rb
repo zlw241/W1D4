@@ -1,3 +1,5 @@
+require 'colorize'
+
 class Board
   def self.empty_grid
     Array.new(9) do
@@ -91,6 +93,7 @@ class Tile
   end
 
   def color
+    # given? ? value.to_s.blue : value.to_s.red
     given? ? :blue : :red
   end
 
@@ -99,7 +102,9 @@ class Tile
   end
 
   def to_s
-    value == 0 ? " " : value.to_s.colorize(color)
+    # value == 0 ? " " : color#(color)
+    # To call a symbol method, use .send(:symbol)
+    value == 0 ? " " : value.to_s.send(color)
   end
 
   def value=(new_value)
@@ -109,6 +114,7 @@ class Tile
       @value = new_value
     end
   end
+end
 
 class SudokuGame
   def self.from_file(filename)
@@ -147,7 +153,7 @@ class SudokuGame
     end
     val
   end
-
+#
   def parse_pos(string)
     string.split(",").map { |char| Integer(char) }
   end
