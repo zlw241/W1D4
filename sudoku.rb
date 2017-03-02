@@ -84,5 +84,7 @@ class SudokuGame
 end
 
 
-game = SudokuGame.from_file("puzzles/sudoku1.txt")
-game.commence_proceedings
+if __FILE__ == $PROGRAM_NAME
+  game = SudokuGame.from_file("puzzles/sudoku1-almost.txt")
+  game.commence_proceedings
+end
